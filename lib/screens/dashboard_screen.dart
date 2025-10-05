@@ -5,6 +5,9 @@ import '../widgets/recent_chart.dart';
 import '../widgets/action_tile.dart';
 import '../widgets/schedule_timeline.dart';
 
+// ✅ Import only calendar for now
+import '../screens/calendar_screen.dart';
+
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
@@ -16,13 +19,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int selectedTab = 0;
   String filterValue = 'This month';
 
-  final List<Widget> _screens = [
-    const Center(child: Text("Dashboard")), // index 0
-    const Center(child: Text("Calendar")),  // index 1
-    const Center(child: Text("Profile")),   // index 2
-    const Center(child: Text("Hospital")),  // index 3
-    const Center(child: Text("Reports")),   // index 4
-    const Center(child: Text("Settings")),  // index 5
+  final List<Widget> _screens = const [
+    SizedBox(), // index 0 = Dashboard
+    CalendarScreen(), // index 1 = Calendar
   ];
 
   @override
@@ -36,7 +35,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             onItemSelected: (i) => setState(() => selectedTab = i),
           ),
 
-          // MAIN CONTENT (changes based on tab)
+          // MAIN CONTENT
           Expanded(
             flex: 3,
             child: AnimatedSwitcher(
@@ -68,7 +67,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 Expanded(
                                   child: TextField(
                                     decoration: InputDecoration(
-                                      hintText: 'Search for patients...',
+                                      hintText:
+                                      'Search for patients...',
                                       border: InputBorder.none,
                                     ),
                                   ),
@@ -228,7 +228,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ],
                 ),
               )
-                  : _screens[selectedTab], // Other tabs show placeholder
+                  : _screens[selectedTab], // ✅ Only Dashboard & Calendar work
             ),
           ),
 

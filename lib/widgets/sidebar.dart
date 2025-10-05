@@ -56,7 +56,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
     return GestureDetector(
       onTap: () {
         _animateTo(index);
-        widget.onItemSelected(index);
+        widget.onItemSelected(index); // ✅ only updates index
       },
       child: Container(
         height: iconHeight,
@@ -150,10 +150,10 @@ class _SidebarPainter extends CustomPainter {
     // smooth "water-drop" S-curve wrapping icon
     path.quadraticBezierTo(
         size.width, centerY, size.width - radius, centerY + radius / 2);
-    path.quadraticBezierTo(
-        size.width - 2 * radius, centerY + iconHeight / 2, size.width - radius, centerY + iconHeight - radius / 2);
-    path.quadraticBezierTo(
-        size.width, centerY + iconHeight, size.width, centerY + iconHeight + radius);
+    path.quadraticBezierTo(size.width - 2 * radius, centerY + iconHeight / 2,
+        size.width - radius, centerY + iconHeight - radius / 2);
+    path.quadraticBezierTo(size.width, centerY + iconHeight, size.width,
+        centerY + iconHeight + radius);
 
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
