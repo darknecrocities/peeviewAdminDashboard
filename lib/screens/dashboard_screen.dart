@@ -3,7 +3,7 @@ import '../widgets/sidebar.dart';
 import '../widgets/stat_card.dart';
 import '../widgets/recent_chart.dart';
 import '../widgets/action_tile.dart';
-import '../widgets/schedule_timeline.dart';
+import 'package:peeviewadmin/widgets/schedule_timeline.dart';
 
 // ✅ Import only calendar for now
 import '../screens/calendar_screen.dart';
